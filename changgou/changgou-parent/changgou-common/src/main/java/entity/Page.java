@@ -22,9 +22,9 @@ public class Page <T> implements Serializable{
 	// 最后一页
 	private int last;
 	
-	private int lpage;
+	private int lpage;//左边的开始的页码
 	
-	private int rpage;
+	private int rpage;//右边额开始的页码
 	
 	//从哪条开始查
 	private long start;
