@@ -1,6 +1,7 @@
 package com.changgou.goods.controller;
 import com.changgou.goods.pojo.Sku;
 import com.changgou.goods.service.SkuService;
+import com.changgou.order.pojo.OrderItem;
 import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
@@ -130,4 +131,13 @@ public class SkuController {
         List<Sku> skusList = skuService.findByStatus(status);
         return new Result<List<Sku>>(true,StatusCode.OK,"查询sku列表成功",skusList);
     }
+
+
+    @PostMapping(value = "/decr/count")
+    public Result decrCount(@RequestBody  OrderItem orderItem){
+        skuService.derCount(orderItem);
+        return new Result(true,StatusCode.OK,"减少库存成功");
+    }
+
+
 }

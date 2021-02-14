@@ -1,6 +1,7 @@
 package com.changgou.user.service.impl;
 
 import com.changgou.user.dao.UserMapper;
+import com.changgou.user.pojo.Address;
 import com.changgou.user.pojo.User;
 import com.changgou.user.service.UserService;
 import com.github.pagehelper.PageHelper;
@@ -207,4 +208,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         return userMapper.selectAll();
     }
+
+    @Override
+    public int addPoints(Integer points, String username) {
+        return userMapper.addPoints(points, username);
+    }
+
+
 }
