@@ -54,8 +54,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         converter.setVerifierKey(getPubKey());
         return converter;
     }
+
     /**
      * 获取非对称加密公钥 Key
+     *
      * @return 公钥 Key
      */
     private String getPubKey() {
@@ -85,11 +87,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.authorizeRequests()
                 //下边的路径放行
                 .antMatchers(
-                        "/user/add"). //配置地址放行
+                        "/user/add","/user/load/*"). //配置地址放行
                 permitAll()
-                .anyRequest().
-                authenticated();    //其他地址需要认证授权
+                .anyRequest()
+                .authenticated();    //其他地址需要认证授权
     }
 
-    //  <http:
+
 }

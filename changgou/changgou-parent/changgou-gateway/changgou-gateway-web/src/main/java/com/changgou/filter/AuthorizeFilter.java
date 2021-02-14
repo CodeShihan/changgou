@@ -66,7 +66,9 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         //5 解析令牌数据 ( 判断解析是否正确,正确 就放行 ,否则 结束)
 
         try {
-            Claims claims = JwtUtil.parseJWT(token);
+            //Claims claims = JwtUtil.parseJWT(token);
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,6 +76,12 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             return response.setComplete();
         }
+
+        //添加头信息 传递给 各个微服务()
+        request.mutate().header(AUTHORIZE_TOKEN,"Bearer "+ token);
+
+
+
         return chain.filter(exchange);
     }
 

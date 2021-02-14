@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(value="goods")
 @RequestMapping("/spu")
 public interface SpuFeign {
+
     @GetMapping("/{id}")
     public Result<Spu> findById(@PathVariable(name = "id") Long id);
 }

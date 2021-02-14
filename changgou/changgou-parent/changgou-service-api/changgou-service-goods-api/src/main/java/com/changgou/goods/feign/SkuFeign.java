@@ -35,4 +35,11 @@ public interface SkuFeign {
      */
     @PostMapping(value = "/search" )
     public Result<List<Sku>> findList(@RequestBody(required = false) Sku sku);
+
+
+    @GetMapping("/{id}")
+    public Result<Sku> findById(@PathVariable(name="id") Long id);
+
+
+
 }
